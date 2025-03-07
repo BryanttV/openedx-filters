@@ -40,6 +40,29 @@ See the fragment files in the `changelog.d directory`_.
 
 .. scriv-insert-here
 
+.. _changelog-3.0.0:
+
+[v3.0.0] - 2025-03-07
+---------------------
+
+Added
+~~~~~
+
+* Added new ``CourseAccessFilter`` for controlling course content access.
+* Added support for asynchronous filter execution. (by @developer)
+
+Deprecated
+~~~~~~~~~~
+
+* Deprecated legacy filter registration method.
+* Deprecated old filter pipeline format. (by @developer)
+
+Fixed
+~~~~~
+
+* Fixed memory leak in long-running filter chains.
+* Fixed incorrect exception handling in filter pipeline. (by @developer)
+
 .. _changelog-2.1.0:
 
 [v2.1.0] - 2025-03-07
