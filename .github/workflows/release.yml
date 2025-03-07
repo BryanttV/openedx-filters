@@ -28,6 +28,8 @@ jobs:
         run: make requirements
 
       - name: Create or update GitHub release
-        run: scriv github-release --repo=bryanttv/openedx-filters
+        run:
+          cat CHANGELOG.rst
+          scriv github-release --repo=bryanttv/openedx-filters
         env:
           GITHUB_TOKEN: ${{ github.token }}
