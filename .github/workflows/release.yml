@@ -1,4 +1,5 @@
 name: Create a new GitHub Release
+run-name: Bump to version ${{ github.env.NEW_VERSION }}
 
 on:
   workflow_dispatch:
@@ -40,8 +41,10 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Get new version
-        run: echo "NEW_VERSION=$(bump-my-version show --increment $TAG new_version)" >> $GITHUB_ENV
+      - name: Get current and new version
+        run: |
+          echo "NEW_VERSION=$(bump-my-version show --increment $TAG new_version)" >> $GITHUB_ENV
+          echo "CURRENT_VERSION=$(bump-my-version show current_version)" >> $GITHUB_ENV
 
       - name: Bump version
         run: bump-my-version bump $TAG
@@ -53,7 +56,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: ${{ github.ref }}
-          commit_message: "chore: bump version"
+          commit_message: "chore: bump version $CURRENT_VERSION → $NEW_VERSION"
 
       - name: Create tag
         run: git tag "v$NEW_VERSION"
