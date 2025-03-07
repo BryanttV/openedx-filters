@@ -1,5 +1,4 @@
 name: Create a new GitHub Release
-run-name: Bump to version ${{ github.env.NEW_VERSION }}
 
 on:
   workflow_dispatch:
