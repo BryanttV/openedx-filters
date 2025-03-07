@@ -40,6 +40,35 @@ See the fragment files in the `changelog.d directory`_.
 
 .. scriv-insert-here
 
+.. _changelog-3.1.0:
+
+[v3.1.0] - 2025-03-07
+---------------------
+
+Removed
+~~~~~~~
+
+* Removed deprecated v1 filter interfaces.
+* Removed support for synchronous-only filters. (by @developer)
+
+Deprecated
+~~~~~~~~~~
+
+* Deprecated legacy filter registration method.
+* Deprecated old filter pipeline format. (by @developer)
+
+Fixed
+~~~~~
+
+* Fixed memory leak in long-running filter chains.
+* Fixed incorrect exception handling in filter pipeline. (by @developer)
+
+Security
+~~~~~~~~
+
+* Enhanced filter input validation.
+* Updated filter execution permissions model. (by @developer)
+
 .. _changelog-3.0.0:
 
 [v3.0.0] - 2025-03-07
