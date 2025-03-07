@@ -40,6 +40,17 @@ See the fragment files in the `changelog.d directory`_.
 
 .. scriv-insert-here
 
+.. _changelog-4.0.2:
+
+[v4.0.2] - 2025-03-07
+---------------------
+
+Fixed
+~~~~~
+
+* Fixed memory leak in long-running filter chains.
+* Fixed incorrect exception handling in filter pipeline. (by @developer)
+
 .. _changelog-4.0.1:
 
 [v4.0.1] - 2025-03-07
