@@ -1,6 +1,6 @@
 [tool.bumpversion]
 current_version = "3.0.0"
-tag = true
+tag = false
 commit = false
 
 [[tool.bumpversion.files]]
