@@ -40,6 +40,17 @@ See the fragment files in the `changelog.d directory`_.
 
 .. scriv-insert-here
 
+.. _changelog-3.1.1:
+
+[v3.1.1] - 2025-03-07
+---------------------
+
+Changed
+~~~~~~~
+
+* Improved filter pipeline performance.
+* **BREAKING CHANGE:** Restructured filter response format for better consistency. (by @developer)
+
 .. _changelog-3.1.0:
 
 [v3.1.0] - 2025-03-07
