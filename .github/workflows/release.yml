@@ -1,9 +1,9 @@
 name: Create a new GitHub Release
 
 on:
-  push:
-    tags:
-      - "*"
+  # push:
+  #   tags:
+  #     - "*"
   workflow_dispatch:
 
 jobs:
