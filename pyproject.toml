@@ -2,4 +2,7 @@
 current_version = "2.1.0"
 tag = true
 commit = true
-files = ["pyproject.toml", "openedx_filters/__init__.py"]
+message = "chore: bump version {current_version} → {new_version}"
+
+[[tool.bumpversion.files]]
+filename = "openedx_filters/__init__.py"
