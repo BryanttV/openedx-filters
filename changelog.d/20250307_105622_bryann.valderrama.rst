@@ -1,0 +1,3 @@
+Added
+~~~~~
+* Added new ``DummyFilter`` for controlling dummy content access.
