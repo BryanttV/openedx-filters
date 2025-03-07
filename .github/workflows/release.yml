@@ -43,6 +43,9 @@ jobs:
           github_token: ${{ github.token }}
           default_bump: ${{ github.event.inputs.tag }}
 
+      - name: Git status
+        run: git status
+
       - name: Collect changelog
         run: make changelog
 
