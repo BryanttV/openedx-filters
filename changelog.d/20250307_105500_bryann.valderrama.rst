@@ -1,0 +1,4 @@
+Added
+~~~~~
+* Added new ``CourseAccessFilter`` for controlling course content access.
+* Added support for asynchronous filter execution. (by @developer)
