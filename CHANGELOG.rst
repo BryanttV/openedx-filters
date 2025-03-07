@@ -40,6 +40,17 @@ See the fragment files in the `changelog.d directory`_.
 
 .. scriv-insert-here
 
+.. _changelog-4.0.0:
+
+[v4.0.0] - 2025-03-07
+---------------------
+
+Added
+~~~~~
+
+* Added new ``CourseAccessFilter`` for controlling course content access.
+* Added support for asynchronous filter execution. (by @developer)
+
 .. _changelog-3.1.1:
 
 [v3.1.1] - 2025-03-07
