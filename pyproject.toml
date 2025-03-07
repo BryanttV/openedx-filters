@@ -2,3 +2,4 @@
 current_version = "2.1.0"
 tag = true
 commit = true
+files = ["pyproject.toml", "openedx_filters/__init__.py"]
