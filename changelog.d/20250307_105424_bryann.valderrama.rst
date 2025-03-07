@@ -1,0 +1,4 @@
+Security
+~~~~~~~~
+* Enhanced filter input validation.
+* Updated filter execution permissions model. (by @developer)
