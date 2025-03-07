@@ -55,7 +55,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: ${{ github.ref }}
-          commit_message: "chore: bump version ${{ github.env.CURRENT_VERSION }} → ${{ github.env.NEW_VERSION }}"
+          commit_message: v$NEW_VERSION
 
       - name: Create tag
         run: git tag "v$NEW_VERSION"
