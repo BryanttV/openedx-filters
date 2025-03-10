@@ -24,18 +24,14 @@ jobs:
 
       - name: Set up Python
         uses: actions/setup-python@v5
-        with:
-          python-version: 3.11
-          cache: "pip"
-          cache-dependency-path: requirements/dev.txt
-
-      - name: Install pandoc
-        run: sudo apt install -y pandoc
 
       - name: Install requirements
         run: pip install scriv bump-my-version
 
-      - name: Set up git
+      - name: Install pandoc for scriv
+        run: sudo apt install -y pandoc
+
+      - name: Set up Git
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
@@ -61,7 +57,7 @@ jobs:
       - name: Create tag
         run: git tag "v${{ steps.version.outputs.NEW_VERSION }}"
 
-      - name: Create or update GitHub release
+      - name: Create GitHub release
         run: scriv github-release --repo=bryanttv/openedx-filters
         env:
           GITHUB_TOKEN: ${{ github.token }}
