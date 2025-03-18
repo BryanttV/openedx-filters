@@ -1,0 +1,3 @@
+Changed
+~~~~~~~
+* Update ``release.yml`` workflow to use a specific python version.
