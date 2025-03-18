@@ -40,6 +40,16 @@ See the fragment files in the `changelog.d directory`_.
 
 .. scriv-insert-here
 
+.. _changelog-2.2.0:
+
+[v2.2.0] - 2025-03-18
+---------------------
+
+Changed
+~~~~~~~
+
+* Update ``release.yml`` workflow to use a specific python version and remove create tag step. (by @bryanttv)
+
 .. _changelog-2.1.0:
 
 [v2.1.0] - 2025-03-10

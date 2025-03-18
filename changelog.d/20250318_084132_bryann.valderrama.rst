@@ -1,3 +1,0 @@
-Changed
-~~~~~~~
-* Update ``release.yml`` workflow to use a specific python version and remove create tag step. (by @bryanttv)
