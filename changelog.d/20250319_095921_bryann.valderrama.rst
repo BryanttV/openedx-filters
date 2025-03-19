@@ -1,3 +1,0 @@
-Removed
-~~~~~~~
-* Removed ``hello_world.txt`` file. (by @bryanttv)

@@ -40,6 +40,21 @@ See the fragment files in the `changelog.d directory`_.
 
 .. scriv-insert-here
 
+.. _changelog-3.0.0:
+
+[v3.0.0] - 2025-03-19
+---------------------
+
+Removed
+~~~~~~~
+
+* Removed ``hello_world.txt`` file. (by @bryanttv)
+
+Changed
+~~~~~~~
+
+* Updated step name in ``release.yml`` wokflow. (by @bryanttv)
+
 .. _changelog-2.2.0:
 
 [v2.2.0] - 2025-03-18
