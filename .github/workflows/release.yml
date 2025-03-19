@@ -50,7 +50,7 @@ jobs:
       - name: Collect changelog
         run: make changelog
 
-      - name: Commit changes
+      - name: Commit changes and create tag
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: ${{ github.ref }}
