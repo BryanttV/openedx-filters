@@ -2,21 +2,10 @@ name: Create a new GitHub Release
 
 on:
   workflow_dispatch:
-    inputs:
-      tag:
-        description: "The type of version bump"
-        required: true
-        type: choice
-        options:
-          - "major"
-          - "minor"
-          - "patch"
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    env:
-      TAG: ${{ github.event.inputs.tag }}
 
     steps:
       - name: Checkout
@@ -38,35 +27,18 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Get current and new version
+      - name: Get current version
         id: version
         run: |
           echo "CURRENT_VERSION=$(bump-my-version show current_version)" >> $GITHUB_OUTPUT
-          echo "NEW_VERSION=$(bump-my-version show --increment $TAG new_version)" >> $GITHUB_OUTPUT
 
-      - name: Bump version
-        run: bump-my-version bump $TAG
-
-      - name: Collect changelog
-        run: make changelog
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          commit-message: "chore: bump version ${{ steps.version.outputs.CURRENT_VERSION }} → ${{ steps.version.outputs.NEW_VERSION }}"
-          title: "v${{ steps.version.outputs.NEW_VERSION }} Release"
-          body: |
-            ### Description
-
-            This PR bumps the version from ${{ steps.version.outputs.CURRENT_VERSION }} to ${{ steps.version.outputs.NEW_VERSION }}.
-          branch: "release-${{ steps.version.outputs.NEW_VERSION }}"
-
-      - name: Create tag
+      - name: Create new tag
+        id: tag
         run: |
-          git tag -a "v${{ steps.version.outputs.NEW_VERSION }}" -m "Release v${{ steps.version.outputs.NEW_VERSION }}"
-          git push origin "v${{ steps.version.outputs.NEW_VERSION }}"
+          git tag -a "v${{ steps.version.outputs.CURRENT_VERSION }}" -m "Release v${{ steps.version.outputs.CURRENT_VERSION }}"
+          git push origin "v${{ steps.version.outputs.CURRENT_VERSION }}"
 
       - name: Create GitHub release
-        run: scriv github-release --repo=openedx/openedx-filters
+        run: scriv github-release --repo=bryanttv/openedx-filters
         env:
           GITHUB_TOKEN: ${{ github.token }}
