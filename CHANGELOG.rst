@@ -38,6 +38,31 @@ See the fragment files in the `changelog.d directory`_.
 
 .. scriv-insert-here
 
+.. _changelog-3.0.0:
+
+[v3.0.0] - 2025-04-11
+---------------------
+
+Added
+~~~~~
+
+* New documentation section with naming suggestions for creating filters. (by @mariajgrimaldi)
+
+* Migrate to ``scriv`` for manage changelog. (by @bryanttv)
+
+Changed
+~~~~~~~
+
+* Updated documentation titles and styles to follow the Open edX style guide. (by @Apgomeznext)
+
+* Updated the glossary section in the documentation. (by @Apgomeznext)
+
+* Improved how-to guides including updates to filters, samples, and formatting. (by @mariajgrimaldi)
+
+* Updated edX RTD link to Open edX RTD. (by @sarina)
+
+* Replaced the deprecated ``pydocstyle`` library with ``ruff``. (by @bryanttv)
+
 [2.0.1] - 2025-02-18
 --------------------
 
