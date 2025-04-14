@@ -38,6 +38,16 @@ See the fragment files in the `changelog.d directory`_.
 
 .. scriv-insert-here
 
+.. _changelog-3.1.1:
+
+[v3.1.1] - 2025-04-14
+---------------------
+
+Changed
+~~~~~~~
+
+* Use env variable in create and push git tag step. (by @bryanttv in #9)
+
 .. _changelog-3.1.0:
 
 [v3.1.0] - 2025-04-14
