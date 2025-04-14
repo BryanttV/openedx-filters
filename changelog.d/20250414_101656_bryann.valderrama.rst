@@ -1,0 +1,3 @@
+Changed
+~~~~~~~
+* Updated the release workflow to improve steps naming. (by @bryanttv in #7)
