@@ -1,3 +1,0 @@
-Changed
-~~~~~~~
-* Use env variable in create and push git tag step. (by @bryanttv in #9)
