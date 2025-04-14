@@ -38,6 +38,16 @@ See the fragment files in the `changelog.d directory`_.
 
 .. scriv-insert-here
 
+.. _changelog-3.1.0:
+
+[v3.1.0] - 2025-04-14
+---------------------
+
+Changed
+~~~~~~~
+
+* Updated the release workflow to improve steps naming. (by @bryanttv in #7)
+
 .. _changelog-3.0.0:
 
 [v3.0.0] - 2025-04-11
