@@ -4,22 +4,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  github-release:
+  create-github-release:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: 3.11
 
-      - name: Install release requirements
-        run: pip install scriv bump-my-version
+      - name: Install dev requirements
+        run: make requirements
 
-      - name: Install pandoc for scriv
+      - name: Install pandoc for using scriv with RST
         run: sudo apt install -y pandoc
 
       - name: Configure Git user
@@ -40,6 +37,6 @@ jobs:
           git push origin "v$CURRENT_VERSION"
 
       - name: Create GitHub release
-        run: scriv github-release --repo=bryanttv/openedx-filters
         env:
           GITHUB_TOKEN: ${{ github.token }}
+        run: scriv github-release --repo=bryanttv/openedx-filters
