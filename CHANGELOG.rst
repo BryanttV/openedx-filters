@@ -44,6 +44,16 @@ See the fragment files in the `changelog.d directory`_.
 .. _changelog.d directory: https://github.com/openedx/openedx-filters/tree/master/changelog.d
 .. scriv-insert-here
 
+.. _changelog-3.1.0:
+
+[v3.1.0] - 2025-11-27
+---------------------
+
+Changed
+~~~~~~~
+
+* Updated scriv configuration to use the new GitHub release template. (by @bryanttv in #6)
+
 .. _changelog-3.0.0:
 
 [v3.0.0] - 2025-11-27
