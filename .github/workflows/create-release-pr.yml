@@ -44,21 +44,14 @@ jobs:
       - name: Collect changelog entries
         run: make changelog-collect
 
-      - name: Create pull request.
+      - name: Create pull request
         env:
           GITHUB_TOKEN: ${{ github.token }}
           CURRENT_VERSION: ${{ steps.version.outputs.CURRENT_VERSION }}
           NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
         run: |
           git checkout -b release-$NEW_VERSION
-
-          if git diff --quiet; then
-          echo "No changes detected. Skipping PR creation."
-          exit 0
-          fi
-
-          git add -A
-          git commit -m "chore: bump version $CURRENT_VERSION → $NEW_VERSION"
+          git commit -am "chore: bump version $CURRENT_VERSION → $NEW_VERSION"
           git push origin release-$NEW_VERSION
 
           gh pr create --base master \
