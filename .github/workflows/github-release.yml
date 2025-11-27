@@ -40,6 +40,6 @@ jobs:
           git push origin "v$CURRENT_VERSION"
 
       - name: Create GitHub release
-        run: scriv github-release --repo=openedx/openedx-filters
+        run: scriv github-release --repo=bryanttv/openedx-filters
         env:
           GITHUB_TOKEN: ${{ github.token }}
