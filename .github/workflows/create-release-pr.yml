@@ -51,7 +51,14 @@ jobs:
           NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
         run: |
           git checkout -b release-$NEW_VERSION
-          git commit -am "chore: bump version $CURRENT_VERSION → $NEW_VERSION"
+
+          if git diff --quiet; then
+          echo "No changes detected. Skipping PR creation."
+          exit 0
+          fi
+
+          git add -A
+          git commit -m "chore: bump version $CURRENT_VERSION → $NEW_VERSION"
           git push origin release-$NEW_VERSION
 
           gh pr create --base master \
