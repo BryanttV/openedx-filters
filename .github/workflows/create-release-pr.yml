@@ -51,7 +51,7 @@ jobs:
           CURRENT_VERSION: ${{ steps.version.outputs.CURRENT_VERSION }}
           NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
         with:
-          commit-message: "chore: bump version ${{ env.CURRENT_VERSION }} → ${{ env.NEW_VERSION }}"
+          commit-message: "chore: bump version `v${{ env.CURRENT_VERSION }}` → `v${{ env.NEW_VERSION }}`"
           title: "Release `v${{ env.NEW_VERSION }}`"
           body: |
             ### Description
