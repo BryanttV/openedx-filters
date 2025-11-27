@@ -29,7 +29,7 @@ build==1.3.0
     # via
     #   -r requirements/pip-tools.txt
     #   pip-tools
-bump-my-version==1.2.2
+bump-my-version==1.2.4
     # via -r requirements/dev.in
 cachetools==6.2.2
     # via
@@ -54,8 +54,9 @@ charset-normalizer==3.4.4
     # via
     #   -r requirements/quality.txt
     #   requests
-click==8.3.1
+click==8.2.1
     # via
+    #   -c requirements/constraints.txt
     #   -r requirements/pip-tools.txt
     #   -r requirements/quality.txt
     #   bump-my-version
