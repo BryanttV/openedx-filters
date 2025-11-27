@@ -44,6 +44,36 @@ See the fragment files in the `changelog.d directory`_.
 .. _changelog.d directory: https://github.com/openedx/openedx-filters/tree/master/changelog.d
 .. scriv-insert-here
 
+.. _changelog-3.0.0:
+
+[v3.0.0] - 2025-11-27
+---------------------
+
+Added
+~~~~~
+
+* New documentation section with naming suggestions for creating filters. (by @mariajgrimaldi in #264)
+
+* Migrate to ``scriv`` for manage changelog. (by @bryanttv in #268)
+
+Changed
+~~~~~~~
+
+* Updated documentation titles and styles to follow the Open edX style guide. (by @Apgomeznext in #262 and #263)
+
+* Updated the glossary section in the documentation. (by @Apgomeznext in #266)
+
+* Improved how-to guides including updates to filters, samples, and formatting. (by @mariajgrimaldi in #260)
+
+* Updated edX RTD link to Open edX RTD. (by @sarina in #269)
+
+* Replaced the deprecated ``pydocstyle`` library with ``ruff``. (by @bryanttv in #270)
+
+* Improved documentation of filter configuration including details on configuration formats. (by @bryanttv)
+
+* Update ``release.yml`` workflow to create PR with release changes. (by @bryanttv in #284)
+* Update ``new_fragment.rst.j2`` template to include PR number in the changes. (by @bryanttv in #284)
+
 
 [2.0.1] - 2025-02-18
 --------------------
