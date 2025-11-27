@@ -1,3 +1,3 @@
 Changed
 ~~~~~~~
-* Updated scriv configuration to use the new GitHub release template. (by @bryanttv in #275)
+* Updated scriv configuration to use the new GitHub release template. (by @bryanttv in #6)
