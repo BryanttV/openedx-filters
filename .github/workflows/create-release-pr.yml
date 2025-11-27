@@ -38,37 +38,25 @@ jobs:
           echo "CURRENT_VERSION=$(bump-my-version show current_version)" >> $GITHUB_OUTPUT
           echo "NEW_VERSION=$(bump-my-version show --increment $SEMVER_TYPE new_version)" >> $GITHUB_OUTPUT
 
-      - name: Create release branch
-        env:
-          NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
-        run: git checkout -b release-$NEW_VERSION
-
       - name: Execute bump version
         run: bump-my-version bump $SEMVER_TYPE
 
       - name: Collect changelog entries
         run: make changelog-collect
 
-      - name: Commit and push changes
-        env:
-          CURRENT_VERSION: ${{ steps.version.outputs.CURRENT_VERSION }}
-          NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
-        run: |
-          git commit -am "chore: bump version $CURRENT_VERSION → $NEW_VERSION"
-          git push origin release-$NEW_VERSION
-
       - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          CURRENT_VERSION: ${{ steps.version.outputs.CURRENT_VERSION }}
-          NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
-        run: |
-          gh pr create --base master \
-          --title "$NEW_VERSION release" \
-          --body "
+          CURRENT_VERSION: ${{ env.CURRENT_VERSION }}
+          NEW_VERSION: ${{ env.NEW_VERSION }}
+        with:
+          commit-message: "chore: bump version $CURRENT_VERSION → $NEW_VERSION"
+          title: "Release $NEW_VERSION"
+          body: |
             ### Description
 
-            This PR bumps the version from \`$CURRENT_VERSION\` to \`$NEW_VERSION\`.
+            This PR bumps the version from `$CURRENT_VERSION` to `$NEW_VERSION`.
 
-            The changelog has been automatically generated using \`scriv\`.
-            "
+            The changelog has been automatically generated using `scriv`.
+          branch: release-$NEW_VERSION
