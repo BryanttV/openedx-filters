@@ -1,3 +1,0 @@
-Removed
-=======
-* Removed github release template.
