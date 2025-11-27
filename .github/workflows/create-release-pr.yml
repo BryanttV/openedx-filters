@@ -3,8 +3,8 @@ name: Create a Release Pull Request
 on:
   workflow_dispatch:
     inputs:
-      bump-type:
-        description: "The type of version bump"
+      semver-type:
+        description: "Semantic version to be released"
         required: true
         type: choice
         options:
@@ -16,46 +16,50 @@ jobs:
   create-release-pr:
     runs-on: ubuntu-latest
     env:
-      BUMP_TYPE: ${{ github.event.inputs.bump-type }}
+      SEMVER_TYPE: ${{ github.event.inputs.semver-type }}
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: 3.11
 
-      - name: Install release requirements
-        run: pip install scriv bump-my-version
+      - name: Install dev requirements
+        run: make requirements
 
-      - name: Configure Git user
+      - name: Configure git user
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Compute version bump
+      - name: Calculate current and next version
         id: version
         run: |
           echo "CURRENT_VERSION=$(bump-my-version show current_version)" >> $GITHUB_OUTPUT
-          echo "NEW_VERSION=$(bump-my-version show --increment $BUMP_TYPE new_version)" >> $GITHUB_OUTPUT
+          echo "NEW_VERSION=$(bump-my-version show --increment $SEMVER_TYPE new_version)" >> $GITHUB_OUTPUT
 
-      - name: Bump version
-        run: bump-my-version bump $BUMP_TYPE
+      - name: Execute bump version
+        run: bump-my-version bump $SEMVER_TYPE
 
-      - name: Collect changelog
-        run: make changelog
+      - name: Collect changelog entries
+        run: make changelog-collect
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          commit-message: "chore: bump version ${{ steps.version.outputs.CURRENT_VERSION }} → ${{ steps.version.outputs.NEW_VERSION }}"
-          title: "v${{ steps.version.outputs.NEW_VERSION }} Release"
-          body: |
+      - name: Create pull request.
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          CURRENT_VERSION: ${{ steps.version.outputs.CURRENT_VERSION }}
+          NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
+        run: |
+          git checkout -b release-$NEW_VERSION
+          git commit -am "chore: bump version $CURRENT_VERSION → $NEW_VERSION"
+          git push origin release-$NEW_VERSION
+
+          gh pr create --base master \
+          --title "$NEW_VERSION release" \
+          --body "
             ### Description
 
-            This PR bumps the version from `${{ steps.version.outputs.CURRENT_VERSION }}` to `${{ steps.version.outputs.NEW_VERSION }}`.
+            This PR bumps the version from \`$CURRENT_VERSION\` to \`$NEW_VERSION\`.
 
-            The changelog has been automatically generated using `scriv`.
-          branch: "release-${{ steps.version.outputs.NEW_VERSION }}"
+            The changelog has been automatically generated using \`scriv\`.
+            "
