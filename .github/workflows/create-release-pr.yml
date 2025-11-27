@@ -48,15 +48,15 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          CURRENT_VERSION: ${{ env.CURRENT_VERSION }}
-          NEW_VERSION: ${{ env.NEW_VERSION }}
+          CURRENT_VERSION: ${{ steps.version.outputs.CURRENT_VERSION }}
+          NEW_VERSION: ${{ steps.version.outputs.NEW_VERSION }}
         with:
-          commit-message: "chore: bump version $CURRENT_VERSION → $NEW_VERSION"
-          title: "Release $NEW_VERSION"
+          commit-message: "chore: bump version ${{ env.CURRENT_VERSION }} → ${{ env.NEW_VERSION }}"
+          title: "Release `v${{ env.NEW_VERSION }}`"
           body: |
             ### Description
 
-            This PR bumps the version from `$CURRENT_VERSION` to `$NEW_VERSION`.
+            This PR bumps the version from `v${{ env.CURRENT_VERSION }}` to `v${{ env.NEW_VERSION }}`.
 
             The changelog has been automatically generated using `scriv`.
-          branch: release-$NEW_VERSION
+          branch: release-v${{ env.NEW_VERSION }}
